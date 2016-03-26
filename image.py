@@ -65,7 +65,7 @@ def make_image(term, definition):
         while words and text_draw.textsize(
             ' '.join(line + [words[0]]),
             font=header_font,
-        )[0] < 80*PT:
+        )[0] < 75*PT:
             line.append(words.pop(0))
 
         lines.append(' '.join(line))
@@ -98,4 +98,4 @@ def make_image(term, definition):
 if __name__ == '__main__':
     from sys import argv
     term, definition = argv[1:]
-    make_image(term, definition)
+    print make_image(term, definition)
