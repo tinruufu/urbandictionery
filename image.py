@@ -1,4 +1,5 @@
 import os
+from tempfile import mkdtemp
 from random import choice
 
 from PIL import (
@@ -89,7 +90,9 @@ def make_image(term, definition):
     canvas.paste(get_mask(text.size, (50, 50, 50)), (PT/4, PT/4), shadow)
     canvas.paste(get_mask(text.size, 'white'), (0, 0), text)
 
-    canvas.save('out.png')
+    path = os.path.join(mkdtemp(), 'out.png')
+    canvas.save(path)
+    return path
 
 
 if __name__ == '__main__':
