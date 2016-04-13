@@ -1,6 +1,6 @@
 import tweepy
 
-from euphamism import generate
+from euphamism import prepare, generate
 from image import make_image
 from secrets import app_key, app_secret, token_key, token_secret
 
@@ -11,7 +11,7 @@ api = tweepy.API(auth)
 
 
 def tweet():
-    euphamism = generate()
+    euphamism = generate(*prepare())
     print euphamism
     status = '{} - masturbating'.format(euphamism)
 
