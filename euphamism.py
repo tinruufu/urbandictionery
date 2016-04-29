@@ -11,8 +11,6 @@ CACHE_PATH = os.path.join(os.path.dirname(__file__), 'word-cache')
 
 
 def populate_cache():
-    os.mkdir(CACHE_PATH)
-
     verbs, nouns = (set(), set())
     for wordset, kind in [
         (verbs, wordnet.VERB),
@@ -26,6 +24,8 @@ def populate_cache():
                 )), synset.lemmas()
             ):
                 wordset.add(lemma.name().replace('_', ' '))
+
+    os.mkdir(CACHE_PATH)
 
     for words, filename in [
         (verbs, 'verbs'),
