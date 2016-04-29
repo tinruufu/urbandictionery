@@ -1,3 +1,4 @@
+import os
 from random import choice
 import re
 
@@ -6,8 +7,12 @@ from inflect import engine
 
 inflect = engine()
 
+CACHE_PATH = os.path.join(os.path.dirname(__file__), 'word-cache')
 
-def prepare():
+
+def populate_cache():
+    os.mkdir(CACHE_PATH)
+
     verbs, nouns = (set(), set())
     for wordset, kind in [
         (verbs, wordnet.VERB),
@@ -22,7 +27,23 @@ def prepare():
             ):
                 wordset.add(lemma.name().replace('_', ' '))
 
-    return list(verbs), list(nouns)
+    for words, filename in [
+        (verbs, 'verbs'),
+        (nouns, 'nouns'),
+    ]:
+        with open(os.path.join(CACHE_PATH, filename), 'w') as f:
+            f.writelines((u'{}\n'.format(w) for w in words))
+
+
+def get_words():
+    if not os.path.isdir(CACHE_PATH):
+        populate_cache()
+
+    return [
+        [l.strip()
+         for l in open(os.path.join(CACHE_PATH, filename)).readlines()]
+        for filename in ['verbs', 'nouns']
+    ]
 
 
 def generate(verbs, nouns):
@@ -35,6 +56,6 @@ def generate(verbs, nouns):
 
 
 if __name__ == '__main__':
-    verbs, nouns = prepare()
+    verbs, nouns = get_words()
     for i in xrange(30):
         print generate(verbs, nouns)
