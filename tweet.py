@@ -10,8 +10,9 @@ auth.set_access_token(token_key, token_secret)
 api = tweepy.API(auth)
 
 
-def tweet():
-    euphamism = generate(*get_words())
+def tweet(euphamism=None):
+    if euphamism is None:
+        euphamism = generate(*get_words())
     print euphamism
     status = '{} - masturbating'.format(euphamism)
 
@@ -20,4 +21,14 @@ def tweet():
 
 
 if __name__ == '__main__':
-    tweet()
+    import sys
+
+    if len(sys.argv) == 1:
+        euphamism = None
+    elif len(sys.argv) == 2:
+        euphamism = sys.argv[1]
+    else:
+        print 'too many arguments'
+        sys.exit(1)
+
+    tweet(euphamism)
