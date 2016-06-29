@@ -1,6 +1,6 @@
 nltk==3.0.5
 inflect==0.2.5
-tweepy==3.4.0
+tweepy==3.5.0
 pillow==3.1.1
 selenium==2.53.1
 titlecase==0.8.1
