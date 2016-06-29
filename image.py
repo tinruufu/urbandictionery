@@ -3,7 +3,7 @@ import os
 import subprocess
 from tempfile import mkstemp, mkdtemp
 
-from PIL import Image
+from PIL import Image, ImageFilter
 from selenium.webdriver import PhantomJS
 
 
@@ -24,8 +24,12 @@ def make_image(term, definition):
     driver.set_window_size(*driver.execute_script('return getSize();'))
     driver.save_screenshot(image_path)
 
-    # prevent twitter jpegs
     img = Image.open(image_path)
+
+    # look shittier
+    img = img.filter(ImageFilter.GaussianBlur(1))
+
+    # prevent twitter jpegs
     origin = img.getpixel((0, 0))
     new_origin = origin[:3] + (254,)
     img.putpixel((0, 0), new_origin)
