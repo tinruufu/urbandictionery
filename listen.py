@@ -2,6 +2,7 @@ import re
 
 import tweepy
 
+from euphamism import SLURS
 from tweet import auth, tweet
 from define import define
 
@@ -19,6 +20,11 @@ class Listener(tweepy.StreamListener):
             return
 
         term = strip_tweet_text(status.text)
+
+        for slur in SLURS:
+            if slur in term:
+                return
+
         definition = define(term)
         tweet(
             term, definition,
