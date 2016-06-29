@@ -14,9 +14,9 @@ def tweet(euphamism=None):
     if euphamism is None:
         euphamism = generate(*get_words())
     print euphamism
-    status = '{} - masturbating'.format(euphamism)
+    status = '{} - Masturbating.'.format(euphamism)
 
-    image = make_image(euphamism, 'masturbating.')
+    image = make_image(euphamism, 'Masturbating.')
     api.update_with_media(image, status=status)
 
 

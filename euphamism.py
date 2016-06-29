@@ -4,6 +4,7 @@ import re
 
 from nltk.corpus import wordnet
 from inflect import engine
+from titlecase import titlecase
 
 inflect = engine()
 
@@ -50,9 +51,9 @@ def generate(verbs, nouns):
     verb_words = choice(verbs).split(' ')
     verb_words[0] = inflect.present_participle(verb_words[0])
 
-    return '{} the {}'.format(
+    return titlecase('{} the {}'.format(
         ' '.join(verb_words), choice(nouns)
-    )
+    ))
 
 
 if __name__ == '__main__':
