@@ -2,13 +2,18 @@ import os
 from random import choice
 import re
 
-from nltk.corpus import wordnet
 from inflect import engine
+from nltk.corpus import wordnet
+import requests
 from titlecase import titlecase
 
 inflect = engine()
 
 CACHE_PATH = os.path.join(os.path.dirname(__file__), 'word-cache')
+SLURS = requests.get(
+    'https://raw.githubusercontent.com/dariusk/wordfilter/'
+    'master/lib/badwords.json'
+).json()
 
 
 def populate_cache():
@@ -36,13 +41,22 @@ def populate_cache():
             f.writelines((u'{}\n'.format(w) for w in words))
 
 
+def is_slur(word):
+    for slur in SLURS:
+        if slur in word:
+            return True
+
+    return False
+
+
 def get_words():
     if not os.path.isdir(CACHE_PATH):
         populate_cache()
 
     return [
         [l.strip()
-         for l in open(os.path.join(CACHE_PATH, filename)).readlines()]
+         for l in open(os.path.join(CACHE_PATH, filename)).readlines()
+         if not is_slur(l)]
         for filename in ['verbs', 'nouns']
     ]
 
