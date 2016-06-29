@@ -15,6 +15,9 @@ class Listener(tweepy.StreamListener):
         print 'okay, im listening'
 
     def on_status(self, status):
+        if not status.text.startswith('@urbandictionery'):
+            return
+
         term = strip_tweet_text(status.text)
         definition = define(term)
         tweet(
