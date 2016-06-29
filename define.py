@@ -7,7 +7,7 @@ DEFS = {
     'DT': _DT,
     'FW': 'Masturbieren.',
     'IN': 'In a position recently masturbated in by.',
-    'JJ': 'Masturbatory.',
+    'JJ': 'Masturbating.',  # not accurate, but idk, pos_tag() likes JJ
     'JJR': 'More prone to masturbate.',
     'JJS': 'The most prone to masturbate.',
     'NN': 'Masturbation.',
