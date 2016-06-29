@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="initial-scale=2, minimum-scale=2">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script id="template" type="text/x-handlebars-template">
+      <h1><span>{{term}}</span></h1>
+      <p>{{definition}}</p>
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="target">
+        <h1><span>Village Bicycle</span></h1>
+        <p>When someone (usually male) taps another male on the nutsack firmly enough to elicit a short burst of testicular pain.</p>
+        <p>"Man, I actually prefer getting snapped in the ass with a wet towel in the locker room now that the football team started turkey tapping me after P.E."</p>
+      </div>
+    </div>
+
+    <div id="logo"></div>
+  </body>
+
+  <script>
+    function getSize() {
+      var content = document.getElementById('content');
+      return [content.offsetWidth + 80, content.offsetHeight];
+    }
+
+    function setText(context) {
+      var source = document.getElementById('template').innerHTML;
+      var template = Handlebars.compile(source);
+      document.getElementById('target').innerHTML = template(context);
+    }
+  </script>
+</html>

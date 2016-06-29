@@ -1,0 +1,79 @@
+/* fonts */
+@font-face {
+  font-family: 'Typical Writer';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/TypicalWriter.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  src: url('fonts/Assistant-ExtraBold.woff') format('woff');
+}
+
+/* actual styles */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: white;
+  color: black;
+  font-size: 4rem;
+  font-family: 'Typical Writer', monospace;
+}
+
+#content {
+  max-width: 18em;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  font-family: "Assistant", serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em auto .8em;
+}
+
+h1 span {
+  max-width: 80%;
+  display: inline-block;
+  padding: 0 .5em;
+  background-color: #fff40a;
+}
+
+p {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#logo {
+  margin: 0 auto 1em;
+  text-align: center;
+  box-sizing: border-box;
+  width: 1.5em;
+  height: 1.5em;
+  padding-top: .125em;
+  letter-spacing: -0.05em;
+  border-radius: 100%;
+  background-color: black;
+  color: white;
+}
+
+#logo::before {
+  content: 'u';
+  display: inline-block;
+}
+#logo::after {
+  content: 'b';
+  display: inline-block;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
