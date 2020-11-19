@@ -13,7 +13,7 @@ api = tweepy.API(auth)
 def tweet(euphamism=None, definition='Masturbating.', mention=None, **kwargs):
     if euphamism is None:
         euphamism = generate(*get_words())
-    print euphamism
+    print(euphamism)
     status = '{} - {}'.format(euphamism, definition)
 
     if mention is not None:
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     elif len(sys.argv) == 3:
         euphamism, definition = sys.argv[1:]
     else:
-        print 'too many arguments'
+        print('too many arguments')
         sys.exit(1)
 
     tweet(euphamism)

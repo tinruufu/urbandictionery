@@ -73,4 +73,4 @@ def generate(verbs, nouns):
 if __name__ == '__main__':
     verbs, nouns = get_words()
     for i in xrange(30):
-        print generate(verbs, nouns)
+        print(generate(verbs, nouns))

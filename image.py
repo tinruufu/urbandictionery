@@ -43,4 +43,4 @@ def make_image(term, definition):
 if __name__ == '__main__':
     from sys import argv
     term, definition = argv[1:]
-    print make_image(term, definition)
+    print(make_image(term, definition))

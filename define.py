@@ -40,4 +40,4 @@ if __name__ == '__main__':
     from titlecase import titlecase
 
     for arg in argv[1:]:
-        print '{} - {}'.format(titlecase(arg), define(arg))
+        print('{} - {}'.format(titlecase(arg), define(arg)))
